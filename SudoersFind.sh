@@ -16,11 +16,11 @@ echo "| Searching for binaries with SUID and SGID |"
 echo
 
 echo "| Binaries with SUID |"
-find / -type f -perm -4000 -exec ls -l {} 2>/dev/null | tee suid_binaries.txt
+find / -type f -perm -4000 -exec ls -l {} 2>/dev/null
 
 echo
 echo "| Binaries with SGID |"
-find / -type f -perm -2000 -exec ls -l {} 2>/dev/null | tee sgid_binaries.txt
+find / -type f -perm -2000 -exec ls -l {} 2>/dev/null
 
 echo
 echo "| Checking common binaries for SUID/SGID and privilege escalation potential |"
@@ -62,7 +62,7 @@ gtfobins_list=(
     "grep" "less" "lua" "man" "more" "mount" "mv" "nano" "nc" "nmap" "openssl"
     "perl" "php" "python" "python3" "readelf" "rsync" "scp" "sed" "sh" "socat"
     "ssh" "strace" "tar" "tcpdump" "tee" "telnet" "tftp" "time" "unzip" "vi"
-    "vim" "wget" "xxd" "zip"
+    "vim" "wget" "xxd" "zip" "nc.traditional" "sudo" "find"
 )
 
 for bin in "${gtfobins_list[@]}"; do
@@ -77,7 +77,3 @@ for bin in "${gtfobins_list[@]}"; do
         fi
     fi
 done
-
-echo
-echo "| Scan complete |"
-echo "Reports saved to suid_binaries.txt and sgid_binaries.txt"
